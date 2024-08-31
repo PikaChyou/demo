@@ -57,7 +57,7 @@ git push -u origin main
 
 - Vuejs
 - Vite
-- [elementUI](https://element-plus.org/zh-CN/)
+- [elementPlus](https://element-plus.org/zh-CN/)
 - [echarts](https://echarts.apache.org/zh/index.html)
 
 #### 后台

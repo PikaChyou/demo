@@ -9,9 +9,8 @@
             <img class="form__icon" src="../../src/images/zfb.png" alt="支付宝登录">
             <img class="form__icon" src="../../src/images/qq.png" alt="QQ登录">
           </div>
-          <span class="text">或使用邮箱进行注册</span>
+          <span class="text">进行注册</span>
           <input class="form__input" type="text" placeholder="请输入用户名"/>
-          <input class="form__input" type="text" placeholder="请输入邮箱"/>
           <input class="form__input" type="password" placeholder="请输入密码"/>
           <input class="form__input" type="password" placeholder="请输入密码"/>
           <div class="form__button">立即注册</div>
@@ -39,7 +38,7 @@
           <p>
             {{
               isLogin
-                  ? '如果您还没有账号，请点击下方立即注册按钮进行账号注册'
+                  ? '如果您还没有账号，请点击下方立即注册按钮进行注册'
                   : '如果您已经注册过账号，请点击下方立即登录按钮进行登录'
             }}
           </p>
@@ -64,7 +63,6 @@ export default {
       },
       registerForm: {
         name: '',
-        email: '',
         password: '',
       },
     }
@@ -184,7 +182,7 @@ export default {
   }
 
   .is-txl {
-    left: 0;
+    left: -45px;
     transition: 1.25s;
     transform-origin: right;
   }
@@ -257,7 +255,7 @@ export default {
   }
 
   .login {
-    left: calc(100% - 400px);
+    left: calc(100% - 500px);
 
     .switch__circle {
       left: 0;

@@ -3,10 +3,15 @@ import App from '../App.vue'
 
 import backmain from '../view/back/backmain.vue'
 import mine2 from '../view//back/mine.vue'
-import statistical from '../view//back/statistical.vue'
+import goodserchart from '../view//back/goodserchart.vue'
+import goodsnote from '../view//back/goodsnote.vue'
+import goodsranking from '../view//back/goodsranking.vue'
+import goodssuggest from '../view//back/goodssuggest.vue'
 import frontmain from '../view/front/frontmain.vue'
 import mine1 from '../view//front/mine.vue'
 import shopping from '../view//front/shopping.vue'
+import goodchoose from '../view/front/goodchoose.vue'
+import goodlist from '../view/front/goodlists.vue'
 import login from '../view/login.vue'
 
 const routes = [
@@ -29,6 +34,14 @@ const routes = [
             {
                 path: '/shopping',
                 component:shopping
+            },
+            {
+                path: '/goodchoose',
+                component:goodchoose
+            },
+            {
+                path: '/goodlist',
+                component:goodlist
             }
         ]
     },
@@ -41,8 +54,20 @@ const routes = [
                 component:mine2
             },
             {
-                path: '/statistical',
-                component:statistical
+                path: '/goodserchart',
+                component:goodserchart
+            },
+            {
+                path: '/goodsnote',
+                component:goodsnote
+            },
+            {
+                path: '/goodsranking',
+                component:goodsranking
+            },
+            {
+                path: '/goodssuggest',
+                component:goodssuggest
             }
         ]
     },

@@ -1,8 +1,13 @@
 import { createRouter,createWebHistory,createWebHashHistory } from 'vue-router'
 import App from '../App.vue'
 
-import back from '../view/back/back.vue'
-import front from '../view/front/front.vue'
+import backmain from '../view/back/backmain.vue'
+import mine2 from '../view//back/mine.vue'
+import statistical from '../view//back/statistical.vue'
+import frontmain from '../view/front/frontmain.vue'
+import mine1 from '../view//front/mine.vue'
+import shopping from '../view//front/shopping.vue'
+import login from '../view/login.vue'
 
 const routes = [
     {
@@ -10,19 +15,37 @@ const routes = [
         component:App
     },
     {
-        path: '/front',
-        component:front,
-        children:[]
+        path: '/login',
+        component:login
     },
     {
-        path: '/back',
-        component:back,
-        children:[]
+        path: '/frontmain',
+        component:frontmain,
+        children:[
+            {
+                path: '/mine1',
+                component:mine1
+            },
+            {
+                path: '/shopping',
+                component:shopping
+            }
+        ]
     },
-    // {
-    //     path: '/file2/:username/abc/:userid', //注意看这个
-    //     component:1
-    // }
+    {
+        path: '/backmain',
+        component:backmain,
+        children:[
+            {
+                path: '/mine2',
+                component:mine2
+            },
+            {
+                path: '/statistical',
+                component:statistical
+            }
+        ]
+    },
 ]
 
 const router = createRouter({

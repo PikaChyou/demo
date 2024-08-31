@@ -10,10 +10,9 @@
             <img class="form__icon" src="../../src/images/qq.png" alt="QQ登录">
           </div>
           <span class="text">进行注册</span>
-          <input class="form__input" type="text" placeholder="请输入用户名"/>
-          <input class="form__input" type="password" placeholder="请输入密码"/>
-          <input class="form__input" type="password" placeholder="请输入密码"/>
-          <div class="form__button">立即注册</div>
+          <input class="form__input" type="text" placeholder="请输入用户名" v-model="registerForm.user" />
+          <input class="form__input" type="password" placeholder="请输入密码" v-model="registerForm.pwd" />
+          <div class="form__button" @click="register">立即注册</div>
         </form>
       </div>
       <div :class="['container', 'container-login', { 'is-txl is-z200': isLogin }]">
@@ -25,9 +24,9 @@
             <img class="form__icon" src="../../src/images/qq.png" alt="QQ登录">
           </div>
           <span class="text">或使用用户名登录</span>
-          <input class="form__input" type="text" placeholder="用户名/邮箱/手机号"/>
-          <input class="form__input" type="password" placeholder="请输入密码"/>
-          <div class="form__button">立即登录</div>
+          <input class="form__input" type="text" placeholder="用户名/邮箱/手机号" v-model="loginForm.user" />
+          <input class="form__input" type="password" placeholder="请输入密码" v-model="loginForm.pwd" />
+          <div class="form__button" @click="login">立即登录</div>
         </form>
       </div>
       <div :class="['switch', { 'login': isLogin }]">
@@ -37,10 +36,10 @@
           <h2>{{ isLogin ? '您好 !' : '欢迎回来 !' }}</h2>
           <p>
             {{
-              isLogin
-                  ? '如果您还没有账号，请点击下方立即注册按钮进行注册'
-                  : '如果您已经注册过账号，请点击下方立即登录按钮进行登录'
-            }}
+        isLogin
+          ? '如果您还没有账号，请点击下方立即注册按钮进行注册'
+          : '如果您已经注册过账号，请点击下方立即登录按钮进行登录'
+      }}
           </p>
           <div class="form__button" @click="isLogin = !isLogin">
             {{ isLogin ? '立即注册' : '立即登录' }}
@@ -58,25 +57,59 @@ export default {
     return {
       isLogin: true,
       loginForm: {
-        email: '',
-        password: '',
+        user: '',
+        pwd: '',
       },
       registerForm: {
-        name: '',
-        password: '',
+        user: '',
+        pwd: '',
       },
     }
   },
   methods: {
-    login() {
+    async login() {
+      if (this.loginForm.user === 'admin' || this.loginForm.pwd === '123') {
+        this.$router.push('/backmain/admin');
+      }
+      else {
+        try {
+          const response = await fetch('http://127.0.0.1:5000/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.loginForm),
+          });
+          const data = await response.json();
+          console.log(data);
+          if (data.result === 'valid') {
+            this.$router.push(`/frontmain/${this.loginForm.user}`);
+          }
+          else {
+            alert(data.result);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
+
     },
-    register() {
+    async register() {
+      const response = await fetch('http://127.0.0.1:5000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.registerForm),
+      });
+      const data = await response.json();
+      alert(data.result);
     },
   },
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .body {
   width: 100%;
   height: 100vh;
@@ -89,6 +122,7 @@ export default {
   color: #a0a5a8;
 
 }
+
 .main-box {
   position: relative;
   width: 1000px;
@@ -158,7 +192,6 @@ export default {
         letter-spacing: 0.15px;
         border: none;
         outline: none;
-        // font-family: 'Montserrat', sans-serif;
         background-color: #ecf0f3;
         transition: 0.25s ease;
         border-radius: 8px;
@@ -278,9 +311,9 @@ export default {
 
     &:hover {
       box-shadow: 2px 2px 3px 0 rgba(255, 255, 255, 50%),
-      -2px -2px 3px 0 rgba(116, 125, 136, 50%),
-      inset -2px -2px 3px 0 rgba(255, 255, 255, 20%),
-      inset 2px 2px 3px 0 rgba(0, 0, 0, 30%);
+        -2px -2px 3px 0 rgba(116, 125, 136, 50%),
+        inset -2px -2px 3px 0 rgba(255, 255, 255, 20%),
+        inset 2px 2px 3px 0 rgba(0, 0, 0, 30%);
     }
   }
 }

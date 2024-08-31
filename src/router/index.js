@@ -50,7 +50,7 @@ const routes = [
     ],
   },
   {
-    path: "/backmain/:id",
+    path: "/backmain",
     component: backmain,
     children: [
       {

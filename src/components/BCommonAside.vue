@@ -15,30 +15,56 @@
             <el-icon><location /></el-icon>
             <span>首页</span>
           </template>
-          <el-menu-item-group title="商品展示">
-            <router-link to="/mine2">
-            <el-menu-item index="1-1">全部商品</el-menu-item>
+          <el-menu-item-group title="订单信息">
+            <router-link to="goodsnote">
+            <el-menu-item index="1-1">订单记录</el-menu-item>
+            </router-link>
+          </el-menu-item-group>
+        </el-sub-menu>
+        <el-sub-menu index="2">
+          <template #title>
+            <el-icon><icon-menu /></el-icon>
+           商品
+          </template>
+          <el-menu-item-group title="商品信息">
+            <router-link to="goodsranking">
+            <el-menu-item index="2-1">商品销售排行</el-menu-item>
           </router-link>
-          <router-link to="/mine2">
-            <el-menu-item index="1-2">商品筛选</el-menu-item>
+          <router-link to="goodserchart">
+            <el-menu-item index="2-2">商品销售情况可视化</el-menu-item>
+          </router-link>
+          <router-link to="goodssuggest">
+            <el-menu-item index="2-3">商品销售推荐</el-menu-item>
           </router-link>
           </el-menu-item-group>
         </el-sub-menu>
-        <el-menu-item index="2">
-          <el-icon><icon-menu /></el-icon>
-          购物车
-        </el-menu-item>
         <el-sub-menu index="3">
           <template #title>
             <el-icon><location /></el-icon>
             <span>我的</span>
           </template>
-          <el-menu-item-group title="客户信息">
-            <router-link to="/mine2">
-            <el-menu-item index="3-1">客户个人信息</el-menu-item>
-            </router-link>
+          <el-menu-item-group title="商户信息">
+            <router-link to="mine2">
+            <el-menu-item index="3-1">商户信息</el-menu-item>
+          </router-link>
           </el-menu-item-group>
         </el-sub-menu>
+        <!-- <el-menu-item index="2">
+          <el-icon><icon-menu /></el-icon>
+          <span>购物车</span>
+          <el-menu-item-group title="销售情况">
+            <el-menu-item index="2-1">商品销售排行</el-menu-item>
+            <el-menu-item index="2-2">商品销售情况可视化</el-menu-item>
+            <el-menu-item index="2-2">商品销售推荐</el-menu-item>
+          </el-menu-item-group>
+        </el-menu-item>
+        <el-menu-item index="3">
+          <el-icon><icon-menu /></el-icon>
+          <span>我的</span>
+          <el-menu-item-group title="商户信息">
+            <el-menu-item index="3-1">商户信息</el-menu-item>
+          </el-menu-item-group>
+        </el-menu-item> -->
       </el-menu>
     </el-col>
   </el-row>
@@ -87,5 +113,4 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
-
 </script>

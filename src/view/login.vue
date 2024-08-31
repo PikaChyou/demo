@@ -69,7 +69,7 @@ export default {
   methods: {
     async login() {
       if (this.loginForm.user === 'admin' || this.loginForm.pwd === '123') {
-        this.$router.push('/backmain/admin');
+        this.$router.push('/backmain');
       }
       else {
         try {
@@ -109,7 +109,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .body {
   width: 100%;
   height: 100vh;
@@ -118,7 +118,7 @@ export default {
   align-items: center;
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
-  background-image: url("@/assets/images/background.jpg");
+  background-image: url("../images/plant.png");
   color: #a0a5a8;
 
 }

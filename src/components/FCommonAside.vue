@@ -16,27 +16,37 @@
             <span>首页</span>
           </template>
           <el-menu-item-group title="订单信息">
+            <router-link to="/mine2">
             <el-menu-item index="1-1">订单记录</el-menu-item>
+            </router-link>
           </el-menu-item-group>
         </el-sub-menu>
         <el-sub-menu index="2">
           <template #title>
             <el-icon><icon-menu /></el-icon>
-            <span>购物车</span>
+           购物车
           </template>
           <el-menu-item-group title="订单信息">
+            <router-link to="/mine2">
             <el-menu-item index="2-1">商品销售排行</el-menu-item>
+          </router-link>
+          <router-link to="/mine2">
             <el-menu-item index="2-2">商品销售情况可视化</el-menu-item>
+          </router-link>
+          <router-link to="/mine2">
             <el-menu-item index="2-3">商品销售推荐</el-menu-item>
+          </router-link>
           </el-menu-item-group>
         </el-sub-menu>
-        <el-sub-menu index="2">
+        <el-sub-menu index="3">
           <template #title>
             <el-icon><location /></el-icon>
             <span>我的</span>
           </template>
           <el-menu-item-group title="商户信息">
+            <router-link to="/mine2">
             <el-menu-item index="3-1">商户信息</el-menu-item>
+          </router-link>
           </el-menu-item-group>
         </el-sub-menu>
         <!-- <el-menu-item index="2">
@@ -78,6 +88,15 @@
     font-weight: 400;
   }
 }
+
+.is-active{
+  color:#ffd04b
+}
+
+a{
+  text-decoration: none;
+}
+
 </style>
 
 

@@ -83,7 +83,7 @@ export default {
           const data = await response.json();
           console.log(data);
           if (data.result === 'valid') {
-            this.$router.push(`/frontmain/${this.loginForm.user}`);
+            this.$router.push(`/frontmain/${this.loginForm.user}/`);
           }
           else {
             alert(data.result);

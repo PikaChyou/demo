@@ -4,15 +4,15 @@
       <el-aside width="auto">
         <BCommonAside/>
       </el-aside>
-      <el-container>
-        <el-header>
+      <div class="container">
+        <div class="header">
           <BCommonHeader/>
-        </el-header>
-        <el-main>
+        </div>
+        <div class="main">
           <router-view>
           </router-view>
-        </el-main>
-      </el-container>
+        </div>
+      </div>
     </el-container>
   </div>
 </template>
@@ -36,9 +36,23 @@
   }
   </script>
   <style scoped>
-  .el-header{
-    padding: 0 !important; 
-    border: none;
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
   }
+
+
+  .header{
+    width:100%;
+    height:7.5%;
+  }
+
+  .main{
+    height:92.5%
+  }
+
+
   </style>
   

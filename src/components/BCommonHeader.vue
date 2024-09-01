@@ -25,7 +25,7 @@
   align-items: center;
   padding: 0 20px;
   background-color: #55679C;
-  height: 60px;
+  height: 100%;
   
 }
 

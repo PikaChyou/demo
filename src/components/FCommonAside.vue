@@ -17,7 +17,7 @@
             <span>首页</span>
           </template>
           <el-menu-item-group title="商品展示">
-            <el-menu-item index="goodlist">全部商品</el-menu-item>
+            <el-menu-item index="goodlists">全部商品</el-menu-item>
             <el-menu-item index="goodchoose">商品筛选</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>

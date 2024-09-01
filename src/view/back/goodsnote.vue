@@ -1,85 +1,126 @@
 <template>  
-    <div class="container mx-auto my-5">  
-      <h1 class="text-2xl font-bold mb-4">订单记录</h1>  
-      
-      <form @submit.prevent="addOrder" class="mb-4">  
-        <input v-model="newOrder.customerName" type="text" placeholder="客户姓名" required class="border p-2 mr-2" />  
-        <input v-model="newOrder.amount" type="number" placeholder="订单金额" required class="border p-2 mr-2" />  
-        <select v-model="newOrder.status" class="border p-2 mr-2">  
-          <option value="已付款">已付款</option>  
-          <option value="待发货">待发货</option>  
-          <option value="已完成">已完成</option>  
-        </select>  
-        <button type="submit" class="bg-blue-500 text-white p-2">新增订单</button>  
-      </form>  
+  <div class="my-orders">  
+    <el-row>  
+      <el-col :span="18">  
+        <el-card>  
+          <div class="orders-header">  
+            <h2>全部订单</h2>  
+          </div>  
+          <div class="filter-buttons">  
+            <el-button @click="filterOrders('待付款')">待付款</el-button>  
+            <el-button @click="filterOrders('待发货')">待发货</el-button>  
+            <el-button @click="filterOrders('已发货')">已发货</el-button>  
+            <el-button @click="filterOrders('已完成')">已完成</el-button>  
+            <el-button @click="filterOrders('all')">全部</el-button>  
+          </div>  
+          <el-table :data="filteredOrders" style="width: 100%">  
+            <el-table-column prop="orderTime" label="时间" />  
+            <el-table-column prop="orderId" label="订单号" />  
+            <el-table-column prop="product" label="商品" />  
+            <el-table-column prop="price" label="单价" />  
+            <el-table-column prop="quantity" label="数量" />  
+            <el-table-column prop="total" label="实付款" />  
+            <el-table-column prop="status" label="交易状态" >   
+            </el-table-column>  
+          </el-table>  
+        </el-card>  
+      </el-col>  
+    </el-row>  
+  </div>  
+</template>  
 
-      <table class="min-w-full bg-white border border-gray-300">  
-        <thead>  
-          <tr>  
-            <th class="py-2 px-4 border-b">订单 ID</th>  
-            <th class="py-2 px-4 border-b">客户姓名</th>  
-            <th class="py-2 px-4 border-b">订单金额</th>  
-            <th class="py-2 px-4 border-b">状态</th>  
-            <th class="py-2 px-4 border-b">操作</th>  
-          </tr>  
-        </thead>  
-        <tbody>  
-          <tr v-for="order in orders" :key="order.id">  
-            <td class="py-2 px-4 border-b">{{ order.id }}</td>  
-            <td class="py-2 px-4 border-b">{{ order.customerName }}</td>  
-            <td class="py-2 px-4 border-b">{{ order.amount }} 元</td>  
-            <td class="py-2 px-4 border-b">{{ order.status }}</td>  
-            <td class="py-2 px-4 border-b">  
-              <button @click="deleteOrder(order.id)" class="bg-red-500 text-white p-1">删除</button>  
-            </td>  
-          </tr>  
-        </tbody>  
-      </table>  
-    </div>  
-  </template>  
-
-  <script>  
-  import { ref } from "vue";  
-
-  export default {  
-    name: "OrderRecord",  
-    setup() {  
-      const orders = ref([  
-        { id: 1, customerName: "张三", amount: 100, status: "已付款" },  
-        { id: 2, customerName: "李四", amount: 150, status: "待发货" },  
-        { id: 3, customerName: "王五", amount: 200, status: "已完成" },  
-      ]);  
-
-      const newOrder = ref({  
-        customerName: "",  
-        amount: 0,  
-        status: "已付款",  
-      });  
-
-      const addOrder = () => {  
-        const orderId = orders.value.length ? orders.value[orders.value.length - 1].id + 1 : 1;  
-        orders.value.push({ id: orderId, ...newOrder.value });  
-        newOrder.value = { customerName: "", amount: 0, status: "已付款" }; // 重置表单  
-      };  
-
-      const deleteOrder = (id) => {  
-        orders.value = orders.value.filter(order => order.id !== id);  
-      };  
-
-      return {  
-        orders,  
-        newOrder,  
-        addOrder,  
-        deleteOrder,  
-      };  
+<script>  
+export default {  
+  data() {  
+    return {  
+      activeTab: 'all', // 默认选中全部  
+      orders: [  
+        {  
+          orderTime: '03-11 20:02',  
+          orderId: '50',  
+          product: '空气净化器',  
+          price: 999,  
+          quantity: 2,  
+          total: 1998,  
+          status: '待付款',  
+        },  
+        {  
+          orderTime: '03-11 19:40',  
+          orderId: '48',  
+          product: '网易智能电子秤',  
+          price: 59,  
+          quantity: 1,  
+          total: 59,  
+          status: '已发货',  
+        },  
+        {  
+          orderTime: '03-11 19:39',  
+          orderId: '47',  
+          product: 'IH电饭煲',  
+          price: 499,  
+          quantity: 1,  
+          total: 499,  
+          status: '待发货',  
+        },  
+        {  
+          orderTime: '03-11 19:38',  
+          orderId: '46',  
+          product: '智能手表',  
+          price: 199,  
+          quantity: 1,  
+          total: 199,  
+          status: '已完成',  
+        },  
+      ],  
+      filteredOrders: [], // 存储筛选后的订单  
+    };  
+  },  
+  created() {  
+    this.filteredOrders = this.orders; // 初始化时显示所有订单  
+  },  
+  methods: {  
+    filterOrders(status) {  
+      if (status === 'all') {  
+        this.filteredOrders = this.orders; // 显示所有订单  
+      } else {  
+        this.filteredOrders = this.orders.filter(order => order.status === status); // 根据状态筛选订单  
+      }  
+      this.activeTab = status; // 更新当前状态  
     },  
-  };  
-  </script>  
+    confirmPayment(orderId) {  
+      // 找到对应的订单并更新状态  
+      const order = this.orders.find(order => order.orderId === orderId);  
+      if (order) {  
+        order.status = '待发货'; // 修改状态为待发货  
+        alert(`确认付款: ${orderId}, 订单状态已更新为: ${order.status}`);  
+        this.filterOrders(this.activeTab); // 重新筛选，更新显示  
+      }  
+    },  
+    confirmReceipt(orderId) {  
+    
+      // 找到对应的订单并更新状态  
+      const order = this.orders.find(order => order.orderId === orderId);  
+      if (order) {  
+        order.status = '已完成'; // 修改状态为待发货  
+        alert(`确认收货: ${orderId}, 订单状态已更新为: ${order.status}`);  
+        this.filterOrders(this.activeTab); // 重新筛选，更新显示  
+      }
+    },  
+  },  
+};  
+</script>  
 
-  <style scoped>  
-  .container {  
-    max-width: 800px;  
-    margin: 0 auto;  
-    padding: 20px;  
-  }  
-  </style>  
+<style scoped>  
+.my-orders {  
+  padding: 20px;  
+}  
+.orders-header {  
+  margin-bottom: 20px;  
+}  
+.no-cursor {  
+  cursor: default; /* 设置光标为默认状态 */  
+}  
+.filter-buttons {  
+  margin-bottom: 20px;  
+}  
+</style>

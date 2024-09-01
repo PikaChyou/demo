@@ -1,12 +1,6 @@
 <template>  
     <div class="shopping-page">  
-        <el-row>  
-        <el-col :span="6">  
-          <el-menu default-active="1">  
-            <el-menu-item index="1">购物车</el-menu-item>  
-            <el-menu-item index="2">我的订单</el-menu-item>   
-          </el-menu>  
-        </el-col>  
+        <el-row>   
       <el-col :span="18">  
         <el-card>  
           <div class="cart-header">  

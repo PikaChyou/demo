@@ -15,7 +15,7 @@ import frontmain from "../view/front/frontmain.vue";
 import mine1 from "../view//front/mine.vue";
 import shopping from "../view//front/shopping.vue";
 import goodchoose from "../view/front/goodchoose.vue";
-import goodlist from "../view/front/goodlists.vue";
+import goodlists from "../view/front/goodlists.vue";
 import login from "../view/login.vue";
 
 const routes = [
@@ -44,8 +44,8 @@ const routes = [
         component: goodchoose,
       },
       {
-        path: "goodlist",
-        component: goodlist,
+        path: "goodlists",
+        component: goodlists,
       },
     ],
   },

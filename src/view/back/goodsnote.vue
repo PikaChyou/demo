@@ -1,7 +1,7 @@
 <template>  
   <div class="my-orders">  
     <el-row>  
-      <el-col :span="18">  
+      <el-col>  
         <el-card>  
           <div class="orders-header">  
             <h2>全部订单</h2>  
@@ -20,7 +20,24 @@
             <el-table-column prop="price" label="单价" />  
             <el-table-column prop="quantity" label="数量" />  
             <el-table-column prop="total" label="实付款" />  
-            <el-table-column prop="status" label="交易状态" >   
+            <el-table-column prop="status" label="交易状态" >  
+            <!-- <el-table-column label="操作">  
+              <template #default="scope">  
+                <el-button  
+                  v-if="scope.row.status === '待付款'"  
+                  type="primary"  
+                  @click="confirmPayment(scope.row.orderId)"  
+                >  
+                  确认付款  
+                </el-button>  
+                <el-button  
+                  v-if="scope.row.status === '已发货'"  
+                  type="success"  
+                  @click="confirmReceipt(scope.row.orderId)"  
+                >  
+                  确认收货  
+                </el-button>  
+              </template>   -->
             </el-table-column>  
           </el-table>  
         </el-card>  

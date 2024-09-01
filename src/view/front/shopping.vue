@@ -1,7 +1,7 @@
 <template>  
     <div class="shopping-cart">  
       <el-row>    
-        <el-col :span="18">  
+        <el-col>  
           <el-card>  
             <div class="cart-header">  
               <h2>购物车</h2>  
@@ -31,7 +31,7 @@
             </el-table>  
             <div class="cart-footer">  
               <span>应付金额：¥{{ totalAmount }}</span>  
-              <el-button type="primary" @click="checkout">下单</el-button>  
+              <el-button type="primary" @click="checkout">付款</el-button>  
             </div>  
           </el-card>  
         </el-col>  
@@ -65,7 +65,7 @@
       },  
       checkout() {  
         // 处理下单逻辑  
-        alert('下单成功！');  
+        alert('付款成功！');  
       },  
     },  
   };  

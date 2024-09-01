@@ -1,7 +1,7 @@
 <template>  
     <div class="shopping-page">  
         <el-row>   
-      <el-col :span="18">  
+      <el-col>  
         <el-card>  
           <div class="cart-header">  
              <h2>商品列表</h2>   
@@ -14,10 +14,9 @@
           <template #default="scope">  
             <el-button  
               type="primary"  
-              icon="el-icon-plus"  
               @click="addToCart(scope.row)"  
             >  
-              加入购物车  
+            加入购物车  
             </el-button>  
           </template>  
         </el-table-column>  

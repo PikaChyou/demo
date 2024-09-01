@@ -48,7 +48,7 @@ const route = useRoute();
 const addToCart = async (product) => {
   // console.log(product.id);
   const secondLevelPath = route.path.split('/')[2];
-  const response = await fetch('http://127.0.0.1:5000/add_cart', {
+  await fetch('http://127.0.0.1:5000/add_cart', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

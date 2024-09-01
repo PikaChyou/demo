@@ -5,10 +5,11 @@
         active-text-color="#ffd04b"
         background-color="#545c64"
         class="el-menu-vertical-demo"
-        default-active="2"
+        default-active="$route.path"
         text-color="#fff"
         @open="handleOpen"
         @close="handleClose"
+        router
       >
         <el-sub-menu index="1">
           <template #title>
@@ -16,9 +17,7 @@
             <span>首页</span>
           </template>
           <el-menu-item-group title="订单信息">
-            <router-link to="goodsnote">
-            <el-menu-item index="1-1">订单记录</el-menu-item>
-            </router-link>
+            <el-menu-item index="/backmain/goodsnote">订单记录</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
         <el-sub-menu index="2">
@@ -27,15 +26,9 @@
            商品
           </template>
           <el-menu-item-group title="商品信息">
-            <router-link to="goodsranking">
-            <el-menu-item index="2-1">商品销售排行</el-menu-item>
-          </router-link>
-          <router-link to="goodserchart">
-            <el-menu-item index="2-2">商品销售情况可视化</el-menu-item>
-          </router-link>
-          <router-link to="goodssuggest">
-            <el-menu-item index="2-3">商品销售推荐</el-menu-item>
-          </router-link>
+            <el-menu-item index="/backmain/goodsranking">商品销售排行</el-menu-item>
+            <el-menu-item index="/backmain/goodserchart">商品销售情况可视化</el-menu-item>
+            <el-menu-item index="/backmain/goodssuggest">商品销售推荐</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
         <el-sub-menu index="3">
@@ -44,9 +37,7 @@
             <span>我的</span>
           </template>
           <el-menu-item-group title="商户信息">
-            <router-link to="mine2">
-            <el-menu-item index="3-1">商户信息</el-menu-item>
-          </router-link>
+            <el-menu-item index="/backmain/mine2">商户信息</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
         <!-- <el-menu-item index="2">
@@ -113,4 +104,6 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
+
+
 </script>

@@ -5,10 +5,11 @@
         active-text-color="#ffd04b"
         background-color="#545c64"
         class="el-menu-vertical-demo"
-        default-active="2"
+        default-active="$route.path"
         text-color="#fff"
         @open="handleOpen"
         @close="handleClose"
+        router
       >
         <el-sub-menu index="1">
           <template #title>
@@ -16,29 +17,21 @@
             <span>首页</span>
           </template>
           <el-menu-item-group title="商品展示">
-            <router-link to="goodlists">
-            <el-menu-item index="1-1">全部商品</el-menu-item>
-          </router-link>
-          <router-link to="goodchoose">
-            <el-menu-item index="1-2">商品筛选</el-menu-item>
-          </router-link>
+            <el-menu-item index="goodlist">全部商品</el-menu-item>
+            <el-menu-item index="goodchoose">商品筛选</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
-        <router-link to="shopping">
-        <el-menu-item index="2">
+        <el-menu-item index="shopping">
           <el-icon><icon-menu /></el-icon>
           购物车
         </el-menu-item>
-      </router-link>
         <el-sub-menu index="3">
           <template #title>
             <el-icon><location /></el-icon>
             <span>我的</span>
           </template>
           <el-menu-item-group title="客户信息">
-            <router-link to="mine1">
-            <el-menu-item index="3-1">客户个人信息</el-menu-item>
-            </router-link>
+            <el-menu-item index="mine1">客户个人信息</el-menu-item> 
           </el-menu-item-group>
         </el-sub-menu>
       </el-menu>
@@ -77,12 +70,14 @@ a{
 
 
 <script lang="ts" setup>
+
 import {
   Document,
   Menu as IconMenu,
   Location,
   Setting,
 } from '@element-plus/icons-vue'
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }

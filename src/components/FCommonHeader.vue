@@ -99,7 +99,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #545c64;
+  background-color: #55679C;
   height: 60px;
   
 }

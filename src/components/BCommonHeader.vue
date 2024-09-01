@@ -24,7 +24,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #545c64;
+  background-color: #55679C;
   height: 60px;
   
 }
@@ -41,7 +41,7 @@
 .title {
   font-size: 18px;
   font-weight: bold;
-  color: aliceblue;
+  color: white;
 }
 
 .r-content {

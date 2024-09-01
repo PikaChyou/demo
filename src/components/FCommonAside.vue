@@ -3,7 +3,7 @@
     <el-col :span="12">
       <el-menu
         active-text-color="#ffd04b"
-        background-color="#545c64"
+        background-color="#7C93C3"
         class="el-menu-vertical-demo"
         default-active="$route.path"
         text-color="#fff"
@@ -59,7 +59,8 @@
 }
 
 .is-active{
-  color:#ffd04b
+  color:#ffd04b;
+  background-color: #295f986d;
 }
 
 a{
@@ -67,6 +68,11 @@ a{
 }
 
 </style>
+
+<style>
+.el-menu-item-group__title{
+  color:black !important;
+}</style>
 
 
 <script lang="ts" setup>

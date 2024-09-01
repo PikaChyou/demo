@@ -3,8 +3,9 @@
     <el-col :span="12">
       <el-menu
         active-text-color="#ffd04b"
-        background-color="#545c64"
+        background-color="#7C93C3"
         class="el-menu-vertical-demo"
+        el-menu-item-group-title-color="black"
         default-active="$route.path"
         text-color="#fff"
         @open="handleOpen"
@@ -25,7 +26,7 @@
             <el-icon><icon-menu /></el-icon>
            商品
           </template>
-          <el-menu-item-group title="商品信息">
+          <el-menu-item-group title="商品信息" >
             <el-menu-item index="/backmain/goodsranking">商品销售排行</el-menu-item>
             <el-menu-item index="/backmain/goodserchart">商品销售情况可视化</el-menu-item>
             <el-menu-item index="/backmain/goodssuggest">商品销售推荐</el-menu-item>
@@ -72,7 +73,7 @@
   border-right: none;
   h3 {
     margin: 0;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     line-height: 48px;
     font-size: 16px;
@@ -81,15 +82,24 @@
 }
 
 .is-active{
-  color:#ffd04b
+  color:#ffd04b;
+  background-color: #295f986d;
 }
 
 a{
   text-decoration: none;
 }
 
+// .el-menu-item.is-active{
+//   color:#295F98
+// }
+
 </style>
 
+<style>
+.el-menu-item-group__title{
+  color:black !important;
+}</style>
 
 <script lang="ts" setup>
 import {

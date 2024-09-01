@@ -21,7 +21,7 @@ import login from "../view/login.vue";
 const routes = [
   {
     path: "/",
-    component: App,
+    redirect: "/login",
   },
   {
     path: "/login",

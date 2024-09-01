@@ -2,31 +2,31 @@
   <div class="common-layout">
     <el-container>
       <el-aside width="auto">
-        <FCommonAside/>
+        <BCommonAside/>
       </el-aside>
-      <el-container>
-        <el-header>
-          <FCommonHeader/>
-        </el-header>
-        <el-main>
+      <div class="container">
+        <div class="header">
+          <BCommonHeader/>
+        </div>
+        <div class="main">
           <router-view>
           </router-view>
-        </el-main>
-      </el-container>
+        </div>
+      </div>
     </el-container>
   </div>
 </template>
 
   <script>
-  import FCommonAside from '../../components/FCommonAside.vue'
+  import BCommonAside from '../../components/BCommonAside.vue'
   // 导入拆分的菜单组件
-  import FCommonHeader from '../../components/FCommonHeader.vue'
+  import BCommonHeader from '../../components/BCommonHeader.vue'
   // 导入拆分的头部组件
   export default {
     // 在components中引入组件，引入好，就可以在template中直接使用了
     components: {
-      FCommonAside,
-      FCommonHeader
+      BCommonAside,
+      BCommonHeader
     },
     data() {
       return{
@@ -36,9 +36,23 @@
   }
   </script>
   <style scoped>
-  .el-header{
-    padding: 0 !important; 
-    border: none;
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
   }
+
+
+  .header{
+    width:100%;
+    height:7.5%;
+  }
+
+  .main{
+    height:92.5%
+  }
+
+
   </style>
   

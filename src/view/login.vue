@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     async login() {
-      if (this.loginForm.user === 'admin' || this.loginForm.pwd === '123') {
+      if (this.loginForm.user === 'admin' && this.loginForm.pwd === '123') {
         this.$router.push('/backmain');
       }
       else {

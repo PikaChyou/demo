@@ -29,6 +29,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { ElMessage } from 'element-plus';
+
 
 const Fproducts = [];
 const products = ref([]);
@@ -58,6 +60,7 @@ const addToCart = async (product) => {
         },
         body: JSON.stringify({ goods: product.id, user: secondLevelPath }),
     });
+    ElMessage.success('加入购物车成功');
 };
 
 const searchQuery = ref('');

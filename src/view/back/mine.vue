@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0;
   /* padding: 20px; */
   background: linear-gradient(145deg, #f0f0f0, #ffffff);
